@@ -5,6 +5,6 @@ var overallModule = angular.module('Angular',
     [
         'ngRoute',
         'ngAnimate',
-        'ngMessages',
-        'ngCookies'
+        'ngCookies',
+        'Angular.homepage', //首页模块
     ]);

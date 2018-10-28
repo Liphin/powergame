@@ -4,14 +4,14 @@
 var overallModule = angular.module('Angular');
 
 /**
- * 设置网页路径
+ * 退出登录页面
  */
-// overallModule.directive('saveAnimate', ['$document', function ($document) {
-//     return {
-//         restrict: 'E',
-//         templateUrl: 'src/overall/tmpl/saveAnimate.html'
-//     };
-// }]);
+overallModule.directive('signOut', ['$document', function ($document) {
+    return {
+        restrict: 'E',
+        templateUrl: 'src/overall/tmpl/signOut.html'
+    };
+}]);
 
 
 

@@ -4,8 +4,8 @@
 /**服务器的测试环境和生产环境配置****************************************************************************/
 var projectPath, port, basePath, isProd;
 if (global.env == 'dev') {
-        basePath = "G:\\SoftwareOutSourcing\\PowerGameProjects\\newFront";
-    projectPath = basePath + "\\project"; //项目根文件目录
+        basePath = "E:\\work_program\\wxgame_lh";
+    projectPath = basePath + "\\powerGameFront"; //项目根文件目录
     port = 3030; //本地port
     isProd = false;
 

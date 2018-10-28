@@ -3,7 +3,19 @@
  */
 var overallModule = angular.module('Angular');
 
-overallModule.factory('OverallGeneralSer', function (OverallDataSer, $timeout, $rootScope, $cookies, $location) {
+overallModule.factory('OverallGeneralSer', function ($http, OverallDataSer, $timeout, $rootScope) {
+
+
+    /**
+     * 设置cookie三小时的生存时间
+     * @returns {Date}
+     */
+    var getNewCookiesExpireDate = function () {
+        var expireDate = new Date();
+        expireDate.setHours(expireDate.getHours() + 240, expireDate.getMinutes(), expireDate.getSeconds(), expireDate.getMilliseconds());
+        return expireDate;
+    };
+
 
     /**
      * 对数据进行判空处理
@@ -77,6 +89,27 @@ overallModule.factory('OverallGeneralSer', function (OverallDataSer, $timeout, $
 
 
     /**
+     * 返回当前时间，格式为2018-01-01 12:00:00
+     * @returns {string}
+     */
+    var getDataTime = function () {
+        var date = new Date();
+        return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "  " + date.getHours() + ":" +
+            date.getMinutes() + ":" + date.getSeconds();
+    };
+
+
+    /**
+     * 返回指定时间戳的日期点
+     * @returns {string}
+     */
+    var getTargetDateTime = function (timestamp) {
+        var date = new Date(timestamp);
+        return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    };
+
+
+    /**
      * 设置需要添加完成动画时添加此句
      */
     var setSubmitAnimateSuccess = function (successWord) {
@@ -106,11 +139,117 @@ overallModule.factory('OverallGeneralSer', function (OverallDataSer, $timeout, $
     };
 
 
+    /**
+     * 获取动态信息的数据
+     */
+    var getDynamicInfoNews = function (timestamp, type) {
+        var httpFileName = "";
+        //根据不同类型返回相应http获取数据文件地址
+        switch (type) {
+            case 'coverimg': {
+                httpFileName = OverallDataSer.baseUrlData['frontEndHttp'] + "dynamicinfo/coverimg/" + timestamp + ".png?param=" + getTimeStamp();
+                break;
+            }
+            case 'html': {
+                httpFileName = OverallDataSer.baseUrlData['frontEndHttp'] + "dynamicinfo/html/" + timestamp + "-index.html?param=" + getTimeStamp();
+            }
+        }
+        return httpFileName;
+    };
+
+
+    /**
+     * http get获取资源数据
+     */
+    var httpGetFiles = function (url, callback) {
+        $http({
+            method: 'GET',
+            url: url
+        }).then(function successCallback(response) {
+            if (response['status'] == 200) {
+                //返回正确操作后执行回调函数
+                callback(response['data'])
+
+            } else {
+                alertHttpRequestError("httpPostData", response['exception_code'], response['exception']);
+            }
+        }, function errorCallback(err) {
+            alertHttpRequestError("httpGetFiles", 500, err);
+        });
+    };
+
+
+    /**
+     * http post获取资源数据
+     */
+    var httpPostData = function (url, obj, callback) {
+        var fd = new FormData();
+        //动态装载数据
+        for (var i in obj) {
+            fd.append(i, obj[i]);
+        }
+        $http.post(url, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined},
+
+        }).success(function (response) {
+            if (response['status_code'] == 200) {
+                //返回正确操作后执行回调函数
+                callback(response['data']);
+
+            } else {
+                alertHttpRequestError("httpPostData", response['exception_code'], response['exception']);
+            }
+        }).error(function (err) {
+            alertHttpRequestError("httpPostData", 600, err)
+        });
+    };
+
+
+
+
+    /**
+     * 模态框弹出及隐藏，展示提示信息数据
+     * @param modalType 'lg'/'sm'，分别为显示大或小的模态框
+     * @param showItem 模态框展示条目
+     */
+    var modalInfoShow = function (modalType, showItem) {
+        //遍历每个模态框使其状态为隐藏
+        for (var type in OverallDataSer.modalSetting) {
+            for (var info in OverallDataSer.modalSetting[type]) {
+                if (OverallDataSer.modalSetting[type][info]) {
+                    OverallDataSer.modalSetting[type][info] = false;
+                }
+            }
+        }
+        OverallDataSer.modalSetting[modalType][showItem] = true; //单独设置展示某条模态框
+        //根据不同模态框类型展示不同大小模态框面板
+        if (modalType == 'lg') {
+            $('#modal_info_lg').modal({keyboard: true});
+            $('.modal-backdrop.in').css('z-index', OverallDataSer.zIndexHelper['info_background']);
+
+        } else if (modalType == 'sm') {
+            $('#modal_info_sm').modal({keyboard: true});
+            $('.modal-backdrop.in').css('z-index', OverallDataSer.zIndexHelper['modelInfo']);
+        }
+        console.log(OverallDataSer.modalSetting)
+    };
+
+
+
+
     return {
+        httpGetFiles: httpGetFiles,
+        httpPostData: httpPostData,
+        getDataTime: getDataTime,
         getTimeStamp: getTimeStamp,
         sqlInjectFilter: sqlInjectFilter,
+        modalInfoShow: modalInfoShow,
+        getTargetDateTime:getTargetDateTime,
         checkDataNotEmpty: checkDataNotEmpty,
+        getDynamicInfoNews: getDynamicInfoNews,
         alertHttpRequestError: alertHttpRequestError,
-        setSubmitAnimateSuccess:setSubmitAnimateSuccess,
+        getNewCookiesExpireDate: getNewCookiesExpireDate,
+        setSubmitAnimateSuccess: setSubmitAnimateSuccess,
     }
 });
