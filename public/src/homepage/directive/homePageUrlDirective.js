@@ -19,7 +19,7 @@ var homePageModule = angular.module('Angular.homepage');
 homePageModule.directive('homePage', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/homePage.html'
+        templateUrl: 'src/homepage/tmpl/sub/homePage/homePage.html'
     };
 }]);
 
@@ -29,7 +29,7 @@ homePageModule.directive('homePage', ['$document', function ($document) {
 homePageModule.directive('homeChallengeAltas', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/challengeAltas.html'
+        templateUrl: 'src/homepage/tmpl/sub/challengeAltas/challengeAltas.html'
     };
 }]);
 
@@ -39,7 +39,7 @@ homePageModule.directive('homeChallengeAltas', ['$document', function ($document
 homePageModule.directive('homeAnswer', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/answer.html'
+        templateUrl: 'src/homepage/tmpl/sub/answer/answer.html'
     };
 }]);
 
@@ -49,7 +49,7 @@ homePageModule.directive('homeAnswer', ['$document', function ($document) {
 homePageModule.directive('homeEnjoyPage', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/enjoyPage.html'
+        templateUrl: 'src/homepage/tmpl/sub/enjoyPage/enjoyPage.html'
     };
 }]);
 
@@ -59,7 +59,7 @@ homePageModule.directive('homeEnjoyPage', ['$document', function ($document) {
 homePageModule.directive('homeMyHarvest', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/myHarvest.html'
+        templateUrl: 'src/homepage/tmpl/sub/myHarvest/myHarvest.html'
     };
 }]);
 
@@ -69,7 +69,7 @@ homePageModule.directive('homeMyHarvest', ['$document', function ($document) {
 homePageModule.directive('homeReadLastProblem', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/readLastProblem.html'
+        templateUrl: 'src/homepage/tmpl/sub/readLastProblem/readLastProblem.html'
     };
 }]);
 
@@ -79,7 +79,7 @@ homePageModule.directive('homeReadLastProblem', ['$document', function ($documen
 homePageModule.directive('homeReadProblem', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/readProblem.html'
+        templateUrl: 'src/homepage/tmpl/sub/readProblem/readProblem.html'
     };
 }]);
 
@@ -89,7 +89,7 @@ homePageModule.directive('homeReadProblem', ['$document', function ($document) {
 homePageModule.directive('homeViewGameRule', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/sub/viewGameRule.html'
+        templateUrl: 'src/homepage/tmpl/sub/viewGameRule/viewGameRule.html'
     };
 }]);
 
@@ -103,16 +103,6 @@ homePageModule.directive('homePhoneWindows', ['$document', function ($document) 
     };
 }]);
 
-
-/**
- * 全局手机弹窗模式
- */
-homePageModule.directive('phoneWindows', ['$document', function ($document) {
-    return {
-        restrict: 'E',
-        templateUrl: 'src/homepage/tmpl/common/phoneWindows.html'
-    };
-}]);
 
 
 

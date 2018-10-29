@@ -41,21 +41,15 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
 
     //内部页面跳转展示
     var navigation = {
-        'page': {
-            'status': false,
-            'homePage': false,
-            'answer': false,
-            'challengeAltas': false,
-            'myHarvest': false,
-            'readLastProblem': false,
-            'readProblem': false,
-            'viewGameRule': false,
-        },
-        'commonSer':{
-            'status': false,
-            'enjoyPage:': false,
-            'phoneWindows': false,
-        }
+        'homePage': false,
+        'answer': false,
+        'challengeAltas': false,
+        'myHarvest': false,
+        'readLastProblem': false,
+        'readProblem': false,
+        'viewGameRule': false,
+        'enjoyPage': false,
+        'phoneWindows': false,
     };
 
     return {

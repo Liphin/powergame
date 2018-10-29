@@ -36,7 +36,15 @@ head.load(
     'src/overall/service/overallGeneralService.js',
     'src/overall/service/overallService.js',
     'src/overall/directive/overallDirective.js',
-    'src/overall/directive/overallUrlDirective.js'
+    'src/overall/directive/overallUrlDirective.js',
+
+    /*homepage模块*/
+    'src/homepage/module/homePageModule.js',
+    'src/homepage/controller/homePageController.js',
+    'src/homepage/service/homePageDataService.js',
+    'src/homepage/service/homePageService.js',
+    'src/homepage/directive/homePageDirective.js',
+    'src/homepage/directive/homePageUrlDirective.js',
 
 
 );

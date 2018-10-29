@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('HomePageSer', function ($http, $location,$routeParams,$cookies, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer) {
+homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams,$cookies, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer) {
 
 
     /**
@@ -11,33 +11,40 @@ homePageModule.factory('HomePageSer', function ($http, $location,$routeParams,$c
      */
     var parsePath = function () {
         //路径参数获取
-        var targetType = $routeParams['option'];
+        //var targetType = $routeParams['option'];
         var targetSubPage = $location.search()['subPage'];
 
-        //检查url路径数据
-        if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage) || !OverallGeneralSer.checkDataNotEmpty(targetType)) {
-            //若路径数据不全则默认打开内容栏目的新闻列表页面
+        alert("测试页面跳转");
+        alert(JSON.stringify(targetSubPage));
+
+        // //检查url路径数据
+        // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
+        //     //若路径数据不全则默认打开内容栏目的新闻列表页面
+        //     alert("测试进入首页");
+        //     $location.search({'subPage': 'homePage'});
+        //     return;
+        //
+        // } else {
+        //     initSubPage(targetSubPage);
+        // }
+        if(!OverallGeneralSer.checkDataNotEmpty(targetSubPage)){
+            alert("测试进入首页");
             $location.search({'subPage': 'homePage'});
             return;
-
-        } else {
-            initSubPage(targetType, targetSubPage);
         }
+        initSubPage(targetSubPage);
     };
 
     /**
      * 打开目标子页面操作
      */
-    var initSubPage = function (targetType, targetSubPage) {
+    var initSubPage = function (targetSubPage) {
         //先设置全部页面不显示
-        for (var i in ContentDataSer.navigation) {
-            for (var j in ContentDataSer.navigation[i]) {
-                ContentDataSer.navigation[i][j] = false;
-            }
+        for (var i in HomePageDataSer.navigation) {
+            HomePageDataSer.navigation[i]=false;
         }
         //单独设置目标页面显示
-        HomePageDataSer.navigation[targetType]['status'] = true;
-        HomePageDataSer.navigation[targetType][targetSubPage] = true;
+        HomePageDataSer.navigation[targetSubPage] = true;
 
         //根据目标页面和需求进行设置
         switch (targetSubPage) {
@@ -69,6 +76,11 @@ homePageModule.factory('HomePageSer', function ($http, $location,$routeParams,$c
             case 'viewGameRule' : {
                 break;
             }
+            //进入首页
+            case 'homePage' : {
+                alert("进入首页初始化");
+                break;
+            }
             default: {
                 break;
             }
@@ -84,27 +96,27 @@ homePageModule.factory('HomePageSer', function ($http, $location,$routeParams,$c
      * 初始化页面数据操作
      */
     var initData = function () {
-        //设置标题数据
-        var parameters = $location.search();
-        MyData.overallData['param'] = parameters; //装载参数数据
-
-        //获取用户数据，从本地的cookie中读取数据
-        var userInfo = Cookies.getJSON('userInfo');
-        if (MyGeneralSer.checkDataNotEmpty(userInfo)) {
-            //装载user数据
-            loadUserData(userInfo);
-
-        } else {
-            //根据url是否有code参数逻辑处理
-            if (MyGeneralSer.checkDataNotEmpty(parameters['code'])) {
-                //如果有code则进行code请求user数据
-                getUserInfo(parameters['code']);
-
-            } else {
-                //如果无code则进行code请求，并redirect回该页面
-                reloadPageAndGetCompanyCode();
-            }
-        }
+        // //设置标题数据
+        // var parameters = $location.search();
+        // MyData.overallData['param'] = parameters; //装载参数数据
+        //
+        // //获取用户数据，从本地的cookie中读取数据
+        // var userInfo = Cookies.getJSON('userInfo');
+        // if (MyGeneralSer.checkDataNotEmpty(userInfo)) {
+        //     //装载user数据
+        //     loadUserData(userInfo);
+        //
+        // } else {
+        //     //根据url是否有code参数逻辑处理
+        //     if (MyGeneralSer.checkDataNotEmpty(parameters['code'])) {
+        //         //如果有code则进行code请求user数据
+        //         getUserInfo(parameters['code']);
+        //
+        //     } else {
+        //         //如果无code则进行code请求，并redirect回该页面
+        //         reloadPageAndGetCompanyCode();
+        //     }
+        // }
     };
 
 

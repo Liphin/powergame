@@ -25,23 +25,6 @@ overallModule.controller('OverallCtrl', function ($http, $cookies, $rootScope, $
         OverallSer.preventEventTransport($event);
     };
 
-    /**
-     * 退出登录操作
-     */
-    $rootScope.signOut = function () {
-        //清空用户数据
-        // for (var i in OverallDataSer.overallData['userInfo']) {
-        //     OverallDataSer.overallData['userInfo'][i] = '';
-        // }
-
-        //跳转到登录页面
-        $location.search({});
-        $location.path(OverallDataSer.redirect['loginHome']);
-
-        //刷新当前页面，所有数据重置
-        $window.location.reload();
-    };
-
 
     /**
      * 模态框提示消息的 hide和show

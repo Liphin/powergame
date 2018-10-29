@@ -47,7 +47,7 @@ app.get('/getWxUserInfo', function (req, res) {
 
 //资源文件获取
 app.use('/userinfo', express.static(serverSerData.basePath + '/userinfo'));
-app.use('/favicon.ico', express.static(serverSerData.projectPath + '/public/favicon.png'));
+//app.use('/favicon.ico', express.static(serverSerData.projectPath + '/public/favicon.png'));
 app.use('/assets', express.static(serverSerData.projectPath + '/assets'));
 app.use("/", express.static(serverSerData.projectPath + '/public'));
 app.listen(PORT);

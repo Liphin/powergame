@@ -7,6 +7,7 @@ homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, 
 
     var homepage = this;
     homepage.userInfo = HomePageDataSer.userInfo;
+    homepage.navigation = HomePageDataSer.navigation;
     HomePageSer.parsePath(); //解析路径操作
     HomePageSer.initData();
 
