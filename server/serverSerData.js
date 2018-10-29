@@ -5,7 +5,7 @@
 var projectPath, port, basePath, isProd;
 if (global.env == 'dev') {
         basePath = "E:\\work_program\\wxgame_lh";
-    projectPath = basePath + "\\powerGameFront"; //项目根文件目录
+    projectPath = basePath + "\\powergameFront"; //项目根文件目录
     port = 3030; //本地port
     isProd = false;
 
