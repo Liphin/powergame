@@ -14,8 +14,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //var targetType = $routeParams['option'];
         var targetSubPage = $location.search()['subPage'];
 
-        alert("测试页面跳转");
-        alert(JSON.stringify(targetSubPage));
+        //alert("测试页面跳转");
+        //alert(JSON.stringify(targetSubPage));
 
         // //检查url路径数据
         // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
@@ -28,7 +28,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //     initSubPage(targetSubPage);
         // }
         if(!OverallGeneralSer.checkDataNotEmpty(targetSubPage)){
-            alert("测试进入首页");
+            //alert("测试进入首页");
             $location.search({'subPage': 'homePage'});
             return;
         }
@@ -78,7 +78,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //进入首页
             case 'homePage' : {
-                alert("进入首页初始化");
                 break;
             }
             default: {
