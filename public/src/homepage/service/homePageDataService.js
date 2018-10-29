@@ -9,12 +9,12 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
     var serverHost = 'http://powersupply.liphin.com';
     var frontSerPort = 3030;
     var getWxUserInfo = serverHost + ":" + frontSerPort + "/getWxUserInfo";
-    var goChallengeAltas=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/challengeAltas/challengeAltas.html";
-    var goEnjoyPage=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/enjoyPage/enjoyPage.html";
-    var goMyHarvest=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/myHarvest/myHarvest.html";
-    var goReadLastProblem=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/readLastProblem/readLastProblem.html";
-    var goReadProblem=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/readProblem/readProblem.html";
-    var goViewGameRule=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/viewGameRule/viewGameRule.html";
+    // var goChallengeAltas=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/challengeAltas/challengeAltas.html";
+    // var goEnjoyPage=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/enjoyPage/enjoyPage.html";
+    // var goMyHarvest=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/myHarvest/myHarvest.html";
+    // var goReadLastProblem=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/readLastProblem/readLastProblem.html";
+    // var goReadProblem=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/readProblem/readProblem.html";
+    // var goViewGameRule=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/viewGameRule/viewGameRule.html";
 
     //用户信息
     var userInfo = OverallDataSer.overallData[userInfo];
@@ -56,12 +56,6 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
         userInfo: userInfo,
         overallHomeData: overallHomeData,
         getWxUserInfo: getWxUserInfo,
-        goChallengeAltas: goChallengeAltas,
-        goEnjoyPage: goEnjoyPage,
-        goMyHarvest: goMyHarvest,
-        goReadLastProblem: goReadLastProblem,
-        goReadProblem: goReadProblem,
-        goViewGameRule: goViewGameRule,
         navigation: navigation,
     }
 });

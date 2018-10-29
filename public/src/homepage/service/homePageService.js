@@ -95,27 +95,27 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      * 初始化页面数据操作
      */
     var initData = function () {
-        // //设置标题数据
-        // var parameters = $location.search();
-        // MyData.overallData['param'] = parameters; //装载参数数据
-        //
-        // //获取用户数据，从本地的cookie中读取数据
-        // var userInfo = Cookies.getJSON('userInfo');
-        // if (MyGeneralSer.checkDataNotEmpty(userInfo)) {
-        //     //装载user数据
-        //     loadUserData(userInfo);
-        //
-        // } else {
-        //     //根据url是否有code参数逻辑处理
-        //     if (MyGeneralSer.checkDataNotEmpty(parameters['code'])) {
-        //         //如果有code则进行code请求user数据
-        //         getUserInfo(parameters['code']);
-        //
-        //     } else {
-        //         //如果无code则进行code请求，并redirect回该页面
-        //         reloadPageAndGetCompanyCode();
-        //     }
-        // }
+        //设置标题数据
+        var parameters = $location.search();
+        HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
+
+        //获取用户数据，从本地的cookie中读取数据
+        var userInfo = Cookies.getJSON('userInfo');
+        if (OverallGeneralSer.checkDataNotEmpty(userInfo)) {
+            //装载user数据
+            loadUserData(userInfo);
+
+        } else {
+            //根据url是否有code参数逻辑处理
+            if (OverallGeneralSer.checkDataNotEmpty(parameters['code'])) {
+                //如果有code则进行code请求user数据
+                getUserInfo(parameters['code']);
+
+            } else {
+                //如果无code则进行code请求，并redirect回该页面
+                reloadPageAndGetCompanyCode();
+            }
+        }
     };
 
 
@@ -124,7 +124,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var getUserInfo = function (code) {
         //http请求获取user信息数据
-        var url = MyData.getUserCompanyInfo + '?code=' + code + '&type=' + MyData.friendCircleType;
+        var url = HomePageDataSer.getWxUserInfo + '?code=' + code + '&type=' + MyData.friendCircleType;
         $http({method: 'GET', url: url}).then(function successCallback(response) {
             if (response['status'] == 200) {
                 var data = response['data'];
@@ -169,9 +169,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      * 进入预览新闻数据
      */
     var reloadPageAndGetCompanyCode = function () {
-        MyData.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
-        MyData.viewNewsDetailSetting['agentid'] = MyData.friendCircleAgentId;
-        location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(MyData.viewNewsDetailSetting) + "#wechat_redirect"
+        OverallDataSer.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
+        location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(OverallDataSer.viewNewsDetailSetting) + "#wechat_redirect"
     };
 
     //开始闯关

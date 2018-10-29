@@ -25,6 +25,15 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
         },
     };
 
+    var viewNewsDetailSetting = {
+        'appid': 'wxf52fc57535c3d13b',
+        'redirect_uri': '',
+        'response_type': 'code',
+        'scope': 'snsapi_userinfo',
+        'secret': '47f0bc5a4e0678d7dcee33115a6de819',
+        'state': 'STATE',
+    };
+
     /* URL系统各种文件获取的URL设置 */
     var baseUrlData = {
         'backEndHttp': "http://127.0.0.1:8081/",
@@ -81,5 +90,6 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
         userInfo: userInfo,
         modalSetting: modalSetting,
         zIndexHelper: zIndexHelper,
+        viewNewsDetailSetting: viewNewsDetailSetting,
     }
 });

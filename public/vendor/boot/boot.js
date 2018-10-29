@@ -44,7 +44,7 @@ head.load(
     'src/homepage/service/homePageDataService.js',
     'src/homepage/service/homePageService.js',
     'src/homepage/directive/homePageDirective.js',
-    'src/homepage/directive/homePageUrlDirective.js',
+    'src/homepage/directive/homePageUrlDirective.js'
 
 
 );
