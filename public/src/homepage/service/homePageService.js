@@ -157,7 +157,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //装载user info数据
         HomePageDataSer.userInfo= data;
         OverallDataSer.overallData['userInfo']['openid']=HomePageDataSer.userInfo['openid'];
-        alert(JSON.stringify(OverallDataSer.overallData['userInfo']['openid']));
+        //alert(JSON.stringify(OverallDataSer.overallData['userInfo']['openid']));
     };
 
     /**
