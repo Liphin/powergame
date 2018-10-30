@@ -14,8 +14,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //var targetType = $routeParams['option'];
         var targetSubPage = $location.search()['subPage'];
 
-        //alert("测试页面跳转");
-        //alert(JSON.stringify(targetSubPage));
+        alert("测试页面跳转");
+        alert(JSON.stringify(targetSubPage));
 
         // //检查url路径数据
         // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
@@ -78,8 +78,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //进入首页
             case 'homePage' : {
-                //获取用户基本信息
-                dataInit();
                 break;
             }
             default: {
@@ -98,6 +96,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var dataInit = function () {
         //设置标题数据
+        alert("初始化");
         var parameters = $location.search();
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
 
@@ -188,7 +187,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
 
     return {
-        //dataInit: dataInit,
+        dataInit: dataInit,
         parsePath: parsePath,
     }
 });
