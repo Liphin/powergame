@@ -99,12 +99,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var dataInit = function () {
         //设置标题数据
-        //alert("初始化");
         var parameters = $location.search();
-        console.log(parameters);
-
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
-        //alert(JSON.stringify(HomePageDataSer.overallHomeData['commonData']['param']));
 
         //获取用户数据，从本地的cookie中读取数据
         var userInfo = Cookies.getJSON('userInfo');
@@ -120,8 +116,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
                 getUserInfo(parameters['code']);
 
             } else {
-                //如果无code则进行code请求，并redirect回该页面
-                alert("code为0");
                 reloadPageAndGetCompanyCode();
             }
         }
@@ -172,7 +166,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var reloadPageAndGetCompanyCode = function () {
         OverallDataSer.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
-        alert(JSON.stringify(OverallDataSer.viewNewsDetailSetting['redirect_uri']));
+        //alert(JSON.stringify(OverallDataSer.viewNewsDetailSetting['redirect_uri']));
         location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(OverallDataSer.viewNewsDetailSetting) + "#wechat_redirect"
     };
 

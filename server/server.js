@@ -47,9 +47,20 @@ app.get('/getWxUserInfo', function (req, res) {
 
 //资源文件获取
 app.use('/userinfo', express.static(serverSerData.basePath + '/userinfo'));
-//app.use('/favicon.ico', express.static(serverSerData.projectPath + '/public/favicon.png'));
+app.use('/favicon.ico', express.static(serverSerData.projectPath + '/public/favicon.png'));
 app.use('/assets', express.static(serverSerData.projectPath + '/assets'));
-app.use("/", express.static(serverSerData.projectPath + '/public'));
+
+/*此加载方式用于html5mode资源加载方式方式*/
+app.use('/src', express.static(serverSerData.projectPath + '/public/src'));
+//默认主页
+app.get('/', function (req, res) {
+    res.sendFile(serverSerData.projectPath+"/public/index.html");
+});
+//加载资源
+app.get('/*', function(req, res) {
+    var pathName= url.parse(req.url).pathname;
+    res.sendFile(serverSerData.projectPath + "/public/"+ pathName);
+});
 app.listen(PORT);
 console.log("Server is running at port: " + PORT + " , and at environment: " + global.env);
 

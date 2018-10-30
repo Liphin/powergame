@@ -4,7 +4,7 @@
 
 var overallModule = angular.module('Angular');
 
-overallModule.config(function ($routeProvider, $httpProvider, $sceDelegateProvider) {
+overallModule.config(function ($routeProvider, $httpProvider, $sceDelegateProvider, $locationProvider) {
     $routeProvider
         .when('/homepage', {
             templateUrl: 'src/homepage/tmpl/page.html',
@@ -17,6 +17,9 @@ overallModule.config(function ($routeProvider, $httpProvider, $sceDelegateProvid
             // }
         })
         .otherwise({redirectTo: '/homepage'});
+
+    //采用HTML5mode方式加载数据
+    $locationProvider.html5Mode(true);
 
     //部署拦截器，每次http请求，会经过拦截器方法后再往下传
     $httpProvider.interceptors.push('interceptHttp');
