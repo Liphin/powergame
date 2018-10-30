@@ -78,6 +78,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //进入首页
             case 'homePage' : {
+                //获取用户基本信息
+                dataInit();
                 break;
             }
             default: {
@@ -186,7 +188,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
 
     return {
-        dataInit: dataInit,
+        //dataInit: dataInit,
         parsePath: parsePath,
     }
 });

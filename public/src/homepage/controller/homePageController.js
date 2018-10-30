@@ -9,7 +9,7 @@ homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, 
     homepage.userInfo = HomePageDataSer.userInfo;
     homepage.navigation = HomePageDataSer.navigation;
     HomePageSer.parsePath(); //解析路径操作
-    HomePageSer.dataInit();
+    //HomePageSer.dataInit();
 
     /**
      * 进行栏目内部页面跳转
