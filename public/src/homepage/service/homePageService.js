@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams,$cookies, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer) {
+homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer) {
 
 
     /**
@@ -104,7 +104,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
         //获取用户数据，从本地的cookie中读取数据
         var userInfo = Cookies.getJSON('userInfo');
-        console.log(userInfo);
+        console.log('userInfo',userInfo);
         if (OverallGeneralSer.checkDataNotEmpty(userInfo)) {
             //装载user数据
             loadUserData(userInfo);
@@ -126,7 +126,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      * 先获取用户信息openid
      */
     var getUserInfo = function (code) {
-        console.log(123);
         //http请求获取user信息数据
         var url = HomePageDataSer.getWxUserInfo + '?code=' + code;
         $http({method: 'GET', url: url}).then(function successCallback(response) {
@@ -141,7 +140,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
                 } else {
                     //装载userInfo数据到cookies
                     Cookies.set('userInfo', data, {expires: 7});
-                    //alert('get cookies: ' + JSON.stringify(Cookies.getJSON('userInfo')));
+                    console.log('userInfo',Cookies.getJSON('userInfo'));
                     loadUserData(data);
                 }
             }

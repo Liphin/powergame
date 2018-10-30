@@ -7,7 +7,7 @@ var overallModule = angular.module('Angular');
  * 当有外来请求时候进行拦截，可以进行安全防范等操作或者进行页面跳转等。
  * use this to intercept all when there’s an outgoing server call and to turn it off when the call is completed.
  */
-overallModule.factory('interceptHttp', function ($cookies, $location, $rootScope) {
+overallModule.factory('interceptHttp', function ( $location, $rootScope) {
 
     var intercept = {
         /*成功请求数据*/

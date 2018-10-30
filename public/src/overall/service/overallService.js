@@ -3,7 +3,7 @@
  */
 var overallModule = angular.module('Angular');
 
-overallModule.factory('OverallSer', function ($rootScope, OverallDataSer, $cookies, $location, $http, OverallGeneralSer) {
+overallModule.factory('OverallSer', function ($rootScope, OverallDataSer, $location, $http, OverallGeneralSer) {
 
     /**
      * 鼠标事件停止传递
@@ -72,20 +72,20 @@ overallModule.factory('OverallSer', function ($rootScope, OverallDataSer, $cooki
     var getUserLogonStatus = function () {
         //初始化用户尚未登录或登录信息已超时，设置最低10级别
         var verifiedCamLevel = 10;
-        if ((OverallGeneralSer.checkDataNotEmpty($cookies.get('openid')) ||
-            OverallGeneralSer.checkDataNotEmpty(OverallDataSer.overallData['userInfo']['openid']))) {
-            //用户已经登录，但尚无项目编号信息，返回20级别
-            verifiedCamLevel = 20;
-            if (!OverallGeneralSer.checkDataNotEmpty(OverallDataSer.overallData['userInfo']['openid'])) {
-                OverallDataSer.overallData['userInfo']['openid'] = $cookies.get('openid');
-                getUserData($cookies.get('openid'));
-
-            } else {
-                //延长cookie超时时间
-                $cookies.put('openid', OverallDataSer.overallData['userInfo']['openid'],
-                    {'expires': OverallGeneralSer.getNewCookiesExpireDate()});
-            }
-        }
+        // if ((OverallGeneralSer.checkDataNotEmpty($cookies.get('openid')) ||
+        //     OverallGeneralSer.checkDataNotEmpty(OverallDataSer.overallData['userInfo']['openid']))) {
+        //     //用户已经登录，但尚无项目编号信息，返回20级别
+        //     verifiedCamLevel = 20;
+        //     if (!OverallGeneralSer.checkDataNotEmpty(OverallDataSer.overallData['userInfo']['openid'])) {
+        //         OverallDataSer.overallData['userInfo']['openid'] = $cookies.get('openid');
+        //         getUserData($cookies.get('openid'));
+        //
+        //     } else {
+        //         //延长cookie超时时间
+        //         $cookies.put('openid', OverallDataSer.overallData['userInfo']['openid'],
+        //             {'expires': OverallGeneralSer.getNewCookiesExpireDate()});
+        //     }
+        // }
         return verifiedCamLevel;
     };
 

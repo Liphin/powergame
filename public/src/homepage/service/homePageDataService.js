@@ -6,7 +6,7 @@ var homePageModule = angular.module('Angular.homepage');
 homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
 
     //前台请求api
-    var serverHost = 'http://powersupply.liphin.com';
+    var serverHost = 'http://powergame.liphin.com';
     var frontSerPort = 3030;
     var getWxUserInfo = serverHost + ":" + frontSerPort + "/getWxUserInfo";
     // var goChallengeAltas=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/challengeAltas/challengeAltas.html";

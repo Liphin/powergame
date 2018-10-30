@@ -38,6 +38,7 @@ function GetUserInfoSer() {
             res.setEncoding('utf8');
             res.on('data', function (data) {
                 var userData = JSON.parse(data);
+                // console.log('get userData1', userData)
                 callback(userData);
             });
 
@@ -72,6 +73,7 @@ function GetUserInfoSer() {
             console.log(serverSerData.userWxInfo['openid']);
             getUserInfo(type, res, function (userData) {
                 if(serverGeneralSer.checkDataNotEmpty(userData)){
+                    // console.log('user data',userData);
                     res.send(userData);
                 }
                 else{

@@ -19,14 +19,11 @@ var ServerSer = require('./serverSer');
 var GetUserInfoSer = require('./user/getUserInfoSer');
 
 
-
 /*设置全局变量*/
 var app = express();
 var serverSer = new ServerSer();
 var PORT = serverSerData.port;
 var getUserInfoSer = new GetUserInfoSer();
-
-
 
 
 //设置http请求接收数据最大限额
@@ -44,7 +41,6 @@ app.get('/getWxUserInfo', function (req, res) {
 });
 
 
-
 //资源文件获取
 app.use('/userinfo', express.static(serverSerData.basePath + '/userinfo'));
 app.use('/favicon.ico', express.static(serverSerData.projectPath + '/public/favicon.png'));
@@ -54,13 +50,19 @@ app.use('/assets', express.static(serverSerData.projectPath + '/assets'));
 app.use('/src', express.static(serverSerData.projectPath + '/public/src'));
 //默认主页
 app.get('/', function (req, res) {
-    res.sendFile(serverSerData.projectPath+"/public/index.html");
+    res.sendFile(serverSerData.projectPath + "/public/index.html");
 });
 //加载资源
-app.get('/*', function(req, res) {
-    var pathName= url.parse(req.url).pathname;
-    res.sendFile(serverSerData.projectPath + "/public/"+ pathName);
+app.get('/*', function (req, res) {
+    var pathName = serverSerData.projectPath + "/public/" + url.parse(req.url).pathname;
+    res.sendFile(pathName, '', function (err) {
+        //如果加载不到路由文件，则默认返回index.html初始化加载数据
+        if (err) {
+            res.sendFile(serverSerData.projectPath + "/public/index.html");
+        }
+    });
 });
+
 app.listen(PORT);
 console.log("Server is running at port: " + PORT + " , and at environment: " + global.env);
 

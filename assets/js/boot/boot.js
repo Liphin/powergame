@@ -18,7 +18,7 @@ head.load(
     'https://cdn.bootcss.com/angular.js/1.5.8/angular-animate.min.js',
 
     //'vendor/angular/cookie/angular-cookies.min.js',
-    'https://cdn.bootcss.com/angular.js/1.5.8/angular-cookies.min.js',
+    //'https://cdn.bootcss.com/angular.js/1.5.8/angular-cookies.min.js',
 
     //'vendor/bootstrap/js/bootstrap.js',
     'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js',
