@@ -115,6 +115,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
             } else {
                 //如果无code则进行code请求，并redirect回该页面
+                alert("code为0");
                 reloadPageAndGetCompanyCode();
             }
         }
