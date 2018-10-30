@@ -99,6 +99,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         alert("初始化");
         var parameters = $location.search();
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
+        alert(JSON.stringify(HomePageDataSer.overallHomeData['commonData']['param']));
 
         //获取用户数据，从本地的cookie中读取数据
         var userInfo = Cookies.getJSON('userInfo');
