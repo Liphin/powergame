@@ -26,6 +26,9 @@ head.load(
     //'vendor/others/md5.min.js',//md5加密
     'https://cdn.bootcss.com/blueimp-md5/2.5.0/js/md5.min.js',//md5加密
 
+    //js.cookie.min.js
+    '/assets/js/others/js.cookie.min.js',
+
 
     /*overall part Angular框架全局设置*/
     'src/overall/module/overallModule.js',
