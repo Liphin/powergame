@@ -14,8 +14,8 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //var targetType = $routeParams['option'];
         var targetSubPage = $location.search()['subPage'];
 
-        alert("测试页面跳转");
-        alert(JSON.stringify(targetSubPage));
+        //alert("测试页面跳转");
+        //alert(JSON.stringify(targetSubPage));
 
         // //检查url路径数据
         // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
@@ -31,6 +31,9 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             //alert("测试进入首页");
             $location.search({'subPage': 'homePage'});
             return;
+
+        }else {
+            dataInit();
         }
         initSubPage(targetSubPage);
     };
@@ -96,13 +99,16 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var dataInit = function () {
         //设置标题数据
-        alert("初始化");
+        //alert("初始化");
         var parameters = $location.search();
+        console.log(parameters);
+
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
-        alert(JSON.stringify(HomePageDataSer.overallHomeData['commonData']['param']));
+        //alert(JSON.stringify(HomePageDataSer.overallHomeData['commonData']['param']));
 
         //获取用户数据，从本地的cookie中读取数据
         var userInfo = Cookies.getJSON('userInfo');
+        console.log(userInfo);
         if (OverallGeneralSer.checkDataNotEmpty(userInfo)) {
             //装载user数据
             loadUserData(userInfo);
@@ -126,6 +132,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      * 先获取用户信息openid
      */
     var getUserInfo = function (code) {
+        console.log(123);
         //http请求获取user信息数据
         var url = HomePageDataSer.getWxUserInfo + '?code=' + code;
         $http({method: 'GET', url: url}).then(function successCallback(response) {
@@ -165,6 +172,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      */
     var reloadPageAndGetCompanyCode = function () {
         OverallDataSer.viewNewsDetailSetting['redirect_uri'] = $location.absUrl();
+        alert(JSON.stringify(OverallDataSer.viewNewsDetailSetting['redirect_uri']));
         location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?" + jQuery.param(OverallDataSer.viewNewsDetailSetting) + "#wechat_redirect"
     };
 

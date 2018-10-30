@@ -68,8 +68,8 @@ function GetUserInfoSer() {
         userGeneralSer.getAccessToken(type, res, function () {
 
             //获取用户user数据
-            //console.log(serverSerData.instanceMapper[type]['access_token']);
-            //console.log(serverSerData.userWxInfo['openid']);
+            console.log(serverSerData.instanceMapper[type]['access_token']);
+            console.log(serverSerData.userWxInfo['openid']);
             getUserInfo(type, res, function (userData) {
                 if(serverGeneralSer.checkDataNotEmpty(userData)){
                     res.send(userData);
