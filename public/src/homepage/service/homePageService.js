@@ -94,7 +94,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
     /**
      * 初始化页面数据操作
      */
-    var initData = function () {
+    var dataInit = function () {
         //设置标题数据
         var parameters = $location.search();
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
@@ -120,16 +120,16 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
 
     /**
-     * 先获取用户信息，如果该用户是本公司员工则允许查看消息，否则不允许查看消息
+     * 先获取用户信息openid
      */
     var getUserInfo = function (code) {
         //http请求获取user信息数据
-        var url = HomePageDataSer.getWxUserInfo + '?code=' + code + '&type=' + MyData.friendCircleType;
+        var url = HomePageDataSer.getWxUserInfo + '?code=' + code;
         $http({method: 'GET', url: url}).then(function successCallback(response) {
             if (response['status'] == 200) {
                 var data = response['data'];
                 if (data == '400') {
-                    alert('很抱歉，无法获取用户数据，请在企业微信中打开');
+                    alert('获取用户失败');
 
                 } else if (data == ' 500') {
                     alert('系统错误，服务器异常，请稍后重试,');
@@ -151,18 +151,10 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
      * 装载用户数据
      */
     var loadUserData = function (data) {
-        //装载每个user info数据
-        for (var i in data) {
-            MyData.userInfo[i] = data[i];
-        }
-        //初始化timestamp数据
-        MyData.overallData['timestamp'] = MyData.userInfo['userid'] + '_' + (new Date()).valueOf();
-
-        //获取拼凑HTML相关数据
-        getPhoneHtmlData();
-
-        //初始化企业微信JS调用配置数据
-        initWxConfig();
+        //装载user info数据
+        HomePageDataSer.userInfo= data;
+        OverallDataSer.overallData['userInfo']['openid']=HomePageDataSer.userInfo['openid'];
+        alert(JSON.stringify(OverallDataSer.overallData['userInfo']['openid']));
     };
 
     /**
@@ -194,10 +186,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
 
     return {
-        initData: initData,
-        goAltatsLink: goAltatsLink,
-        goGameRule: goGameRule,
-        goEnjoy: goEnjoy,
+        dataInit: dataInit,
         parsePath: parsePath,
     }
 });

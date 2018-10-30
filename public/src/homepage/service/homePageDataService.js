@@ -16,8 +16,8 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
     // var goReadProblem=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/readProblem/readProblem.html";
     // var goViewGameRule=serverHost + ":" + frontSerPort + "/src/homepage/tmpl/sub/viewGameRule/viewGameRule.html";
 
-    //用户信息
-    var userInfo = OverallDataSer.overallData[userInfo];
+    //用户数据
+    var userInfo = {};
 
     //全局数据
     var overallHomeData = {
@@ -53,9 +53,9 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
     };
 
     return {
-        userInfo: userInfo,
         overallHomeData: overallHomeData,
         getWxUserInfo: getWxUserInfo,
         navigation: navigation,
+        userInfo: userInfo,
     }
 });

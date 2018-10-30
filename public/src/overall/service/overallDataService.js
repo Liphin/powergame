@@ -31,7 +31,7 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
         'response_type': 'code',
         'scope': 'snsapi_userinfo',
         'secret': '47f0bc5a4e0678d7dcee33115a6de819',
-        'state': 'STATE',
+        'state': '1',
     };
 
     /* URL系统各种文件获取的URL设置 */
