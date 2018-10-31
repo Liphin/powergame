@@ -17,6 +17,7 @@ var device = require('express-device');
 var serverSerData = require('./serverSerData');
 var ServerSer = require('./serverSer');
 var GetUserInfoSer = require('./user/getUserInfoSer');
+var JSSDKConfigSer = require('./jssdk/jsSdkConfigSer');
 
 
 /*设置全局变量*/
@@ -24,6 +25,7 @@ var app = express();
 var serverSer = new ServerSer();
 var PORT = serverSerData.port;
 var getUserInfoSer = new GetUserInfoSer();
+var jsSdkConfigSer = new JSSDKConfigSer();
 
 
 //设置http请求接收数据最大限额
@@ -32,13 +34,20 @@ app.use(bodyParser.json({limit: serverSerData.httpDataLimit}));
 app.use(bodyParser.urlencoded({limit: serverSerData.httpDataLimit, extended: true}));
 app.use(serverSer.setCrossOrigin);
 
-
 /**
- * 获取企业微信里成员详细信
+ * 获取微信用户详细信
  */
 app.get('/getWxUserInfo', function (req, res) {
     getUserInfoSer.getWxUserInfo(req, res);
 });
+
+/**
+ * 获取微信js调用签名
+ */
+app.get('/jsSdkConfig', function (req, res) {
+    jsSdkConfigSer.signJsSdk(req, res);
+});
+
 
 
 //资源文件获取

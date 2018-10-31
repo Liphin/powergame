@@ -27,6 +27,7 @@ var httpDataLimit = '25mb';
 var instanceMapper = {
    //用于获取关注用户信息数据接口
     1: {'appid': 'wxf52fc57535c3d13b', 'secret': '47f0bc5a4e0678d7dcee33115a6de819','redirect_uri': 'http://powergame.liphin.com:3030/getWxUserInfo', 'scope' : 'snsapi_userinfo','code':'','access_token':'', 'timestamp':0, 'js_api_ticket':'', 'js_api_timestamp':0},
+    2: {'appid': 'wx16c7efa55a7f976b', 'secret': '6e4698fa5da26b2639e9a578557ddc55','access_token':'', 'timestamp':0, 'js_api_ticket':'', 'js_api_timestamp':0},
 };
 
 var userWxInfo = {

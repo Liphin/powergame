@@ -1,8 +1,51 @@
 /**
  * Created by Administrator on 2018/5/15.
  */
+var url = require('url');
+var util = require('util');
+var request = require('request');
+var serverSerData = require('./serverSerData');
 
 function ServerGeneralSer() {
+
+    var accessTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s";
+
+    /**
+     * 微信公众号非oath接口的access_token获取
+     */
+    this.getAccessToken = function (response, callback) {
+        //非oath接口的access_token类型获取
+        var type = 2;
+        var current = new Date();
+
+        //判断上次获取时间是否小于7000秒内
+        if (current - serverSerData.instanceMapper[type]['timestamp'] < 7000000) {
+            //直接获取cache中的access_token数据
+            console.log('get cache access_token');
+            callback();
+
+        }else {
+            //重新获取新的access_token数据
+            console.log('get new access_token');
+            var uri = util.format(accessTokenUrl, serverSerData.instanceMapper[type]['appid'], serverSerData.instanceMapper[type]['secret']);
+            request.get(uri, function (err, res, body) {
+                if (!err && res['statusCode'] == 200) {
+                    var data= JSON.parse(body);
+                    serverSerData.instanceMapper[type]['access_token'] = data['access_token']; //赋值access_token
+                    serverSerData.instanceMapper[type]['timestamp'] = new Date(); //设置新的插入记录时间
+                    callback();   //调用callback函数
+
+                } else {
+                    //调用出错
+                    console.error("getAccessToken error: ", err);
+                    if (response != null) {
+                        response.send('error');
+                    }
+                }
+            })
+        }
+    };
+
 
     /**
      * 设置异源访问策略
