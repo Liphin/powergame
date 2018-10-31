@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer) {
+homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer, EnjoyPageSer, ChallengeAltasSer) {
 
 
     /**
@@ -35,7 +35,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         }else {
             dataInit();
         }
-        initSubPage(targetSubPage);
     };
 
     /**
@@ -57,10 +56,12 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //查看闯关地图
             case 'challengeAltas': {
+                ChallengeAltasSer.getChallengeAltas();
                 break;
             }
             //查看分享页面
             case 'enjoyPage': {
+                EnjoyPageSer.getEnjoyInfo();
                 break;
             }
             //查看我的成绩
@@ -97,7 +98,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
     /**
      * 初始化页面数据操作
      */
-    var dataInit = function () {
+    var dataInit = function (targetSubPage) {
         //设置标题数据
         var parameters = $location.search();
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
@@ -108,12 +109,13 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         if (OverallGeneralSer.checkDataNotEmpty(userInfo)) {
             //装载user数据
             loadUserData(userInfo);
+            initSubPage(targetSubPage);
 
         } else {
             //根据url是否有code参数逻辑处理
             if (OverallGeneralSer.checkDataNotEmpty(parameters['code'])) {
                 //如果有code则进行code请求user数据
-                getUserInfo(parameters['code']);
+                getUserInfo(parameters['code'],targetSubPage);
 
             } else {
                 reloadPageAndGetCompanyCode();
@@ -125,7 +127,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
     /**
      * 先获取用户信息openid
      */
-    var getUserInfo = function (code) {
+    var getUserInfo = function (code,targetSubPage) {
         //http请求获取user信息数据
         var url = HomePageDataSer.getWxUserInfo + '?code=' + code;
         $http({method: 'GET', url: url}).then(function successCallback(response) {
@@ -142,6 +144,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
                     Cookies.set('userInfo', data, {expires: 7});
                     console.log('userInfo',Cookies.getJSON('userInfo'));
                     loadUserData(data);
+                    initSubPage(targetSubPage);
                 }
             }
         }, function errorCallback(err) {
@@ -190,7 +193,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
 
     return {
-        dataInit: dataInit,
         parsePath: parsePath,
     }
 });

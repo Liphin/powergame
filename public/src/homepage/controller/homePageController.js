@@ -3,11 +3,13 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, HomePageSer) {
+homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, HomePageSer,EnjoyPageSer) {
 
     var homepage = this;
     homepage.userInfo = HomePageDataSer.userInfo;
     homepage.navigation = HomePageDataSer.navigation;
+    homepage.pageLoadData = HomePageDataSer.pageLoadData;
+    homepage.pageCtrData = HomePageDataSer.pageCtrData;
     HomePageSer.parsePath(); //解析路径操作
 
 
@@ -15,9 +17,12 @@ homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, 
      * 进行栏目内部页面跳转
      * @param subPage
      */
-    homepage.chooseProjectSubPage = function (subPage) {
+    homepage.chooseProjectSubPage = function (subPage,data) {
         $location.search('subPage', subPage);
     };
+
+
+
 
     /**
      * 确定答案

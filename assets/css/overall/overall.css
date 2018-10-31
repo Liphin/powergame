@@ -111,19 +111,14 @@ body {
 
 
 
-/*记录查询中页面UI调整*/
-.draftStatus{
-    color: grey;
-}
-.verifyStatus{
+/*记录闯关地图页面按钮颜色*/
+.buttonColorOk{
     color: #ff8500;
 }
-.verifyPassStatus{
-    color: #12a50a;
+.buttonColorOff{
+    color: grey;
 }
-.verifyNotPassStatus{
-    color: #fe4800;
-}
+
 
 /*富文本框上传视频时操作*/
 iframe, embed{
