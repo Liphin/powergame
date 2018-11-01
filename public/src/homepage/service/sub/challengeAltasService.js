@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, $location, HomePageDataSer, HomePageSer,OverallGeneralSer,OverallDataSer) {
+homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, $location, HomePageDataSer,OverallGeneralSer,OverallDataSer) {
 
     var getChallengeAltas = function () {
         //显示加载数据loading界面

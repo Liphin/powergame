@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('EnjoyPageSer', function ($http, $window, $timeout, $location, HomePageDataSer, HomePageSer,OverallDataSer) {
+homePageModule.factory('EnjoyPageSer', function ($http, $window, $timeout, $location, HomePageDataSer,OverallDataSer) {
 
     var getEnjoyInfo = function() {
         var userOpenid=OverallDataSer.overallData['userInfo']['openid'];

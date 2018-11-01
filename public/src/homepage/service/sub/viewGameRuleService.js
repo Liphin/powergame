@@ -3,6 +3,6 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('ViewGameRuleSer', function ($http, $window, $timeout, $location, HomePageDataSer, HomePageSer) {
+homePageModule.factory('ViewGameRuleSer', function ($http, $window, $timeout, $location, HomePageDataSer) {
 
 });
