@@ -5,4 +5,12 @@ var homePageModule = angular.module('Angular.homepage');
 
 homePageModule.factory('MyHarvestSer', function ($http, $window, $timeout, $location, HomePageDataSer, HomePageSer) {
 
+    var getMyHarvestData = function () {
+
+    }
+
+    return {
+        getMyHarvestData: getMyHarvestData,
+    }
+
 });

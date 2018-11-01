@@ -9,8 +9,8 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
         //显示加载数据loading界面
         HomePageDataSer.pageLoadData['loadData'] = true;
         HomePageDataSer.pageLoadData['loadDataText'] = '正在提交信息...';
-
         var userOpenid=OverallDataSer.overallData['userInfo']['openid'];
+
         //装载表单数据
         var fd = new FormData();
         //设置用户openid
@@ -28,6 +28,11 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
                 }
                 else {
                     //如果该用户没有活动信息，则该用户第一次进行闯关，需新增数据库记录
+                    OverallDataSer.overallData['userInfo']['timestamp']=userOpenid + '_' + (new Date()).valueOf();
+                    var timeStamp=OverallDataSer.overallData['userInfo']['timestamp'];
+                    fd.append('openid', userOpenid);
+                    fd.append('timestamp', timeStamp);
+
                     $http.post(HomePageDataSer.setUserActInfo,fd,{
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined},

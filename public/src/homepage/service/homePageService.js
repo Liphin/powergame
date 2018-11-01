@@ -66,6 +66,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //查看我的成绩
             case 'myHarvest' : {
+                MyHarvestSer.getMyHarvestData();
                 break;
             }
             //阅读最后的题目
