@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, HomePageSer,EnjoyPageSer) {
+homePageModule.controller('HomePageCtrl', function ($location, HomePageDataSer, HomePageSer) {
 
     var homepage = this;
     homepage.userInfo = HomePageDataSer.userInfo;

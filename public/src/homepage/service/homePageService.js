@@ -16,6 +16,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
         //alert("测试页面跳转");
         //alert(JSON.stringify(targetSubPage));
+        console.log('subPage',targetSubPage);
 
         // //检查url路径数据
         // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
@@ -33,7 +34,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             return;
 
         }else {
-            dataInit();
+            dataInit(targetSubPage);
         }
     };
 
@@ -47,6 +48,9 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         }
         //单独设置目标页面显示
         HomePageDataSer.navigation[targetSubPage] = true;
+        console.log("跳转页面");
+        console.log(targetSubPage);
+        console.log(HomePageDataSer.navigation['homePage']);
 
         //根据目标页面和需求进行设置
         switch (targetSubPage) {
@@ -103,6 +107,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         //设置标题数据
         var parameters = $location.search();
         HomePageDataSer.overallHomeData['commonData']['param'] = parameters; //装载参数数据
+        console.log(targetSubPage);
 
         //获取用户数据，从本地的cookie中读取数据
         var userInfo = Cookies.getJSON('userInfo');

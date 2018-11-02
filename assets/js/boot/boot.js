@@ -46,8 +46,12 @@ head.load(
     'src/homepage/controller/homePageController.js',
     'src/homepage/service/homePageDataService.js',
     'src/homepage/service/homePageService.js',
+    'src/homepage/service/sub/challengeAltasService.js',
+    'src/homepage/service/sub/enjoyPageService.js',
     'src/homepage/directive/homePageDirective.js',
     'src/homepage/directive/homePageUrlDirective.js'
+
+
 
 
 );
