@@ -29,7 +29,7 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
         'appid': 'wxf52fc57535c3d13b',
         'redirect_uri': '',
         'response_type': 'code',
-        'scope': 'snsapi_userinfo',
+        'scope': 'snsapi_base',
         'secret': '47f0bc5a4e0678d7dcee33115a6de819',
         'state': '1',
     };

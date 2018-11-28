@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer, EnjoyPageSer, ChallengeAltasSer, MyHarvestSer) {
+homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer, EnjoyPageSer, ChallengeAltasSer, ReadLastProblemSer) {
 
 
     /**
@@ -67,7 +67,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
             }
             //查看我的成绩
             case 'myHarvest' : {
-                MyHarvestSer.getMyHarvestData();
+                //MyHarvestSer.getMyHarvestData();
                 break;
             }
             //阅读最后的题目
