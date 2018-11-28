@@ -7,8 +7,8 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
 
     //前台请求api
     var serverHost = 'http://powergame.liphin.com';
-    var backSerPort = 8081;
-    var frontSerPort = 3030;
+    var backSerPort = 8084;
+    var frontSerPort = 3034;
     var getWxUserInfo = serverHost + ":" + frontSerPort + "/getWxUserInfo";
     var getUserActInfo = serverHost + ":" + backSerPort + "/getUserActInfo";
     var setUserActInfo = serverHost + ":" + backSerPort + "/setUserActInfo";

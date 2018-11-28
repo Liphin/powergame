@@ -16,7 +16,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
 
         //alert("测试页面跳转");
         //alert(JSON.stringify(targetSubPage));
-        console.log('subPage',targetSubPage);
+        //console.log('subPage',targetSubPage);
 
         // //检查url路径数据
         // if (!OverallGeneralSer.checkDataNotEmpty(targetSubPage)) {
@@ -48,9 +48,6 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
         }
         //单独设置目标页面显示
         HomePageDataSer.navigation[targetSubPage] = true;
-        console.log("跳转页面");
-        console.log(targetSubPage);
-        console.log(HomePageDataSer.navigation['homePage']);
 
         //根据目标页面和需求进行设置
         switch (targetSubPage) {
@@ -136,6 +133,7 @@ homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeP
     var getUserInfo = function (code,targetSubPage) {
         //http请求获取user信息数据
         var url = HomePageDataSer.getWxUserInfo + '?code=' + code;
+        console.log("重新获取用户数据");
         $http({method: 'GET', url: url}).then(function successCallback(response) {
             if (response['status'] == 200) {
                 var data = response['data'];

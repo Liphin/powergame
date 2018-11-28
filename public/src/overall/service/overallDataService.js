@@ -36,8 +36,8 @@ overallModule.factory('OverallDataSer', function ($rootScope) {
 
     /* URL系统各种文件获取的URL设置 */
     var baseUrlData = {
-        'backEndHttp': "http://127.0.0.1:8081/",
-        'frontEndHttp': "http://127.0.0.1:3030/",
+        'backEndHttp': "http://127.0.0.1:8084/",
+        'frontEndHttp': "http://127.0.0.1:3034/",
     };
 
     /*各种路径信息设置*/
