@@ -7,11 +7,11 @@ var http = require('http');
 var https = require('https');
 var request = require('request');
 var serverSerData = require('../serverSerData');
-var ServerGeneralSer = require('../serverGeneralSer');
-var UserGeneralSer = require('./userGeneralSer');
+//var ServerGeneralSer = require('../serverGeneralSer');
+//var UserGeneralSer = require('./userGeneralSer');
 
-var userGeneralSer = new UserGeneralSer();
-var serverGeneralSer = new ServerGeneralSer();
+//var userGeneralSer = new UserGeneralSer();
+//var serverGeneralSer = new ServerGeneralSer();
 
 
 function GetUserInfoSer() {
