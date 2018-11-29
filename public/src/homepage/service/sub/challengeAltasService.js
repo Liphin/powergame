@@ -48,7 +48,7 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
 
                     }).error(function (err) {
                         alert("尊敬的客户，服务器异常，请稍后重试._");
-                        HomePageDataSer.pageLoadData['loadData'] = false;
+                        //HomePageDataSer.pageLoadData['loadData'] = false;
                     })
                 }
             }
@@ -57,7 +57,7 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
             }
         }).error(function (err) {
             alert("尊敬的客户，服务器异常，请稍后重试.__");
-            HomePageDataSer.pageLoadData['loadData'] = false;
+            //HomePageDataSer.pageLoadData['loadData'] = false;
         }).finally(function () {
             //关闭loading数据界面
             HomePageDataSer.pageLoadData['loadData'] = false;
@@ -78,8 +78,14 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_2']=0;
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_3']=0;
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_4']=0;
+            HomePageDataSer.pageCtrData['challengeAltas']['harvest_money']=0;
 
             //用户我的成绩页面数据  默认是0 定义时已是0
+            HomePageDataSer.pageCtrData['muHarvest']['enjoy_num']=0;
+            HomePageDataSer.pageCtrData['muHarvest']['chance_num']=0;
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_flag']=0;
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_type']=0;
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_money']=0;
         }
         else{
             HomePageDataSer.userActInfo=data;
@@ -95,13 +101,14 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_2']=HomePageDataSer.userActInfo['passStatus_2'];
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_3']=HomePageDataSer.userActInfo['passStatus_3'];
             HomePageDataSer.pageCtrData['challengeAltas']['passStatus_4']=HomePageDataSer.userActInfo['passStatus_4'];
+            HomePageDataSer.pageCtrData['challengeAltas']['harvest_money']=HomePageDataSer.userActInfo['harvest_money'];
 
             //用户我的成绩页面数据
-            HomePageDataSer.pageCtrData['challengeAltas']['enjoy_num']=HomePageDataSer.userActInfo['enjoy_num'];
-            HomePageDataSer.pageCtrData['challengeAltas']['chance_num']=HomePageDataSer.userActInfo['chance_num'];
-            HomePageDataSer.pageCtrData['challengeAltas']['harvest_flag']=HomePageDataSer.userActInfo['harvest_flag'];
-            HomePageDataSer.pageCtrData['challengeAltas']['harvest_type']=HomePageDataSer.userActInfo['harvest_type'];
-            HomePageDataSer.pageCtrData['challengeAltas']['harvest_money']=HomePageDataSer.userActInfo['harvest_money'];
+            HomePageDataSer.pageCtrData['muHarvest']['enjoy_num']=HomePageDataSer.userActInfo['enjoy_num'];
+            HomePageDataSer.pageCtrData['muHarvest']['chance_num']=HomePageDataSer.userActInfo['chance_num'];
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_flag']=HomePageDataSer.userActInfo['harvest_flag'];
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_type']=HomePageDataSer.userActInfo['harvest_type'];
+            HomePageDataSer.pageCtrData['muHarvest']['harvest_money']=HomePageDataSer.userActInfo['harvest_money'];
         }
     }
 

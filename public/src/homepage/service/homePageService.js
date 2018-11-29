@@ -3,7 +3,7 @@
  */
 var homePageModule = angular.module('Angular.homepage');
 
-homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer, EnjoyPageSer, ChallengeAltasSer, ReadLastProblemSer) {
+homePageModule.factory('HomePageSer', function ($http,$window, $location,$routeParams, HomePageDataSer, OverallSer, OverallGeneralSer, OverallDataSer, EnjoyPageSer, ChallengeAltasSer) {
 
 
     /**

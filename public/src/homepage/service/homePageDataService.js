@@ -46,6 +46,7 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
             'passStatus_3': 0,
             'passStatus_4': 0,
             'chance_num': 0,
+            'harvest_money': 0,
         },
         //我的成绩数据
         'muHarvest': {

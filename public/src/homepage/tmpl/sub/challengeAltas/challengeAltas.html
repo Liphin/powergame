@@ -5,11 +5,26 @@
     <!-----------非响应式布局----------->
     <div align="center">
         <!-- 按钮 -->
-        <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn btn-success" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['pass_1']==1,'buttonColorOff':pageCtrData['challengeAltas']['pass_1']==0}">第一关</button>
-        <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn btn-success" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['pass_1']==1,'buttonColorOff':pageCtrData['challengeAltas']['pass_1']==0}">第二关</button>
-        <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn btn-success" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['pass_1']==1,'buttonColorOff':pageCtrData['challengeAltas']['pass_1']==0}">第三关</button>
-        <button ng-click="homepage.chooseProjectSubPage('readLastProblem')" class="btn btn-success" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['pass_1']==1,'buttonColorOff':pageCtrData['challengeAltas']['pass_1']==0}">第四关</button>
-        <button ng-click="homepage.chooseProjectSubPage('myHarvest')" class="btn btn-success" style="width: 40%;height: 40px">我的成绩</button>
+        <div>
+            <button ng-click="homepage.chooseProjectSubPage('myHarvest')" class="btn btn-success" style="width: 40%;height: 40px">我的成绩</button>
+        </div>
+
+        <div>
+            <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['passStatus_1']==1,'buttonColorOff':pageCtrData['challengeAltas']['passStatus_1']==0}">第一关</button>
+        </div>
+
+        <div>
+            <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['passStatus_2']==1,'buttonColorOff':pageCtrData['challengeAltas']['passStatus_2']==0}">第二关</button>
+        </div>
+
+        <div>
+            <button ng-click="homepage.chooseProjectSubPage('readProblem')" class="btn" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['passStatus_3']==1,'buttonColorOff':pageCtrData['challengeAltas']['passStatus_3']==0}">第三关</button>
+        </div>
+
+        <div>
+            <button ng-click="homepage.chooseProjectSubPage('readLastProblem')" class="btn" style="width: 40%;height: 40px" ng-class="{'buttonColorOk':homepage.pageCtrData['challengeAltas']['passStatus_4']==1,'buttonColorOff':pageCtrData['challengeAltas']['passStatus_4']==0}">第四关</button>
+        </div>
+
     </div>
 </div>
 

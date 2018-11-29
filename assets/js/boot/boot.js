@@ -48,11 +48,11 @@ head.load(
     'src/homepage/service/homePageService.js',
     'src/homepage/service/sub/challengeAltasService.js',
     'src/homepage/service/sub/enjoyPageService.js',
-    'src/homepage/service/sub/ReadLastProblemSer.js',
-    'src/homepage/service/sub/AnswerSer.js',
-    'src/homepage/service/sub/MyHarvestSer.js',
-    'src/homepage/service/sub/ReadProblemSer.js',
-    'src/homepage/service/sub/ViewGameRuleSer.js',
+    'src/homepage/service/sub/readLastProblemService.js',
+    'src/homepage/service/sub/answerService.js',
+    'src/homepage/service/sub/myHarvestService.js',
+    'src/homepage/service/sub/readProblemService.js',
+    'src/homepage/service/sub/viewGameRuleService.js',
     'src/homepage/directive/homePageDirective.js',
     'src/homepage/directive/homePageUrlDirective.js'
 
