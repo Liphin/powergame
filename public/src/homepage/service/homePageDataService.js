@@ -37,6 +37,12 @@ homePageModule.factory('HomePageDataSer', function (OverallDataSer) {
         //闯关地图数据
         'challengeAltas': {
             'actFlag': 0, //0-代表用户第一次闯关，1-代表用户不是第一次闯关
+            'open_id': '',
+            'item_list': '',
+            'last_item_list': '',
+            'pass_1_list': '',
+            'pass_2_list': '',
+            'pass_3_list': '',
             'pass_1': 0, //false-没有机会闯关  true-有机会闯关
             'pass_2': 0,
             'pass_3': 0,

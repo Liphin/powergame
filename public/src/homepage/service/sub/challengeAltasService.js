@@ -90,6 +90,13 @@ homePageModule.factory('ChallengeAltasSer', function ($http, $window, $timeout, 
         else{
             HomePageDataSer.userActInfo=data;
             HomePageDataSer.pageCtrData['challengeAltas']['chance_num']=HomePageDataSer.userActInfo['chance_num'];
+            //赋值用户做过的题目
+            HomePageDataSer.pageCtrData['challengeAltas']['item_list']=HomePageDataSer.userActInfo['item_list'];
+            HomePageDataSer.pageCtrData['challengeAltas']['last_item_list']=HomePageDataSer.userActInfo['last_item_list'];
+            HomePageDataSer.pageCtrData['challengeAltas']['pass_1_list']=HomePageDataSer.userActInfo['pass_1_list'];
+            HomePageDataSer.pageCtrData['challengeAltas']['pass_2_list']=HomePageDataSer.userActInfo['pass_2_list'];
+            HomePageDataSer.pageCtrData['challengeAltas']['pass_3_list']=HomePageDataSer.userActInfo['pass_3_list'];
+
             //根据用户闯过的关卡动态显示页面按钮的颜色
             HomePageDataSer.pageCtrData['challengeAltas']['pass_1']=HomePageDataSer.userActInfo['pass_1'];
             HomePageDataSer.pageCtrData['challengeAltas']['pass_2']=HomePageDataSer.userActInfo['pass_2'];
